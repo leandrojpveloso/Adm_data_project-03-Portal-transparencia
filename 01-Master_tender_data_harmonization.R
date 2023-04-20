@@ -68,8 +68,8 @@
   # 4: Defying range files
   {
     # first month/year - MM/01/YYYY
-    year_month_start = mdy("01/01/2018")
-    year_month_end   = mdy("12/01/2018")
+    year_month_start = mdy("01/01/2013")
+    year_month_end   = mdy("12/01/2022")
     
     # To use in the loop
     sequence_dates <- seq.Date( from = year_month_start,
@@ -140,7 +140,7 @@
 
 }
 
-# 2: Raw organizatio ----
+# 2: Raw organization ----
 {
   # 2.1 Download the data from portal da transparencia and unzip it
   source(file.path(path_github,"01-R_code",
@@ -155,7 +155,7 @@
                    "03-Deleting-extra-files.R"))
 }
 
-# 3: Harmonization process ----
+# 3: Data Harmonization ----
 {
   # 3.1 Reading all tender data to export all variables names.
   #     If 02-tender_rename_file.xlsx already created it may not
