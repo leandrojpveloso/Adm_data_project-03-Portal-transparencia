@@ -4,9 +4,9 @@ This data project aims to clean the tender data from Brazil's federal public exp
 
 This data project was conducted using the R programming language. It downloads monthly compressed data from the Transparency Portal and cleans the data by dividing it into five distinct datasets with standardized names and adjusted formats. The main outputs of this data project are the following datasets:
 
-*  **01-tender-YYYY** - It is a yealy data on tender process level. Where we have overall information about the bidding process such as tender method, total amount, bidding, buyer and dates of open and results.
-*  **02-tender-item-YYYY** -  For each tender process we have a set of lots (items) that compose this tender. This data has information of each item, your description, quantity pruchase, estimated value, and finally the winner information.
-*  **03-tender-participants-YYYY** - Competition happens at the \textbf{item or lot level}- This data has the identification of each participants in a lot/tender.
+*  **01-tender-YYYY** - This is a yearly dataset containing information on the tender process level. It includes details about the bidding process, such as the tender method, total amount, bidding, buyer, and dates of opening and results. The unique id is the tender id which is a combination of buyer id + purchase method id + process tender id.
+*  **02-tender-item-YYYY** -  This dataset contains information on the individual lots (items) that are in a tender. It includes details about each item, description, purchase quantity, estimated value, and winning bidder's information. The unique observation in this data is item_id + winner id, it is rare to found a lot with more than one winner but it is possible for framework agreement ( Pregão do tipo registro de preços)
+*  **03-tender-participants-YYYY** -This dataset identifies each participant in a lot/tender, with competition occurring at the item or lot level.
 *  **04-tender-efforts-YYYY** - data of "nota de empenho" - an short invoice that preecede the purchase.
 *  **05-ug_data** - this data contains the information of manage unit that is responsable for the tender process. It has information about manage unit, organ, top organ and finally the location.
 
