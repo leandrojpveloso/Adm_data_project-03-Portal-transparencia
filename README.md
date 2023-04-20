@@ -13,7 +13,7 @@ This data work was made in R. It downloads the monthly compress data Transparenc
 
 # 2: Code struture
 
-The coding flux is made by a master file code call "01-Master_tender_data_harmonization.R" that are responsable for the following functions:
+The coding flux is made by a master file code call "**01-Master_tender_data_harmonization.R**" that are responsable for the following functions:
 * Load Packages. ** It is necessary to install Rtools (R version>=4.2)** 
 * Define main paths
 * Create the folder structure of the project if it is not done.
@@ -25,9 +25,19 @@ The codes are separated in two categories:
 * **Raw organization** : It download the data and reorganize the raw in foders for each it module in a way to become easy to manage the raw files.
 * **Data Harmonization**: It cleans the dataset and harmonize names to general use.
 
+## 2.1: Raw organization
 
+The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R"
 
-
+###  01-Download-porta_transparencia.R
+  This code are has two chunks of the code. First, it download the monthly compress data file from the [here](https://portaldatransparencia.gov.br/download-de-dados/licitacoes). Them, it unzipp all files files donwloaded in a folder.
+  
+###  02-Tender-organization-raw.R
+ Each zip file contains four csv files (tender, lot, participants, and effort). Since it is in a bad organization, this script rename the data, rename for a pattern name, and separate each of 4 modules in a specific folder. Besides that, it also compress it to gz, which saves a large quantity of space and R is able to read it using data.table package.
+ 
+###  03-Deleting-extra-files.R
+ Since all files were already reorganized keeping all the original content, the raw downloaded and unzipped is deleted by this script to save space.
+ 
 
 The code inside this folder, `1-import`, is destinate to read the raw files and harmonize the files. It means, adjust names, labels, formats and minor cleannings.
 The main idea is that we have a set of data in dta/rds format that we can easy merge and append to create the data we requires for our astudy.
