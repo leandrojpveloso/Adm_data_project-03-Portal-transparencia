@@ -42,11 +42,15 @@ The code inside this folder, `1-import`, is destinate to read the raw files and 
 The main idea is that we have a set of data in dta/rds format that we can easy merge and append to create the data we requires for our astudy.
 
 ## 2.2: Data Harmonization
+  The data harmonization process is responsable to standardize names and labels along the data, checking duplications, adjust data formats, and finally save the harmonized data in the a "import" folder in rds compressed format. In order to do it, we first create an auxiliary data "02-tender_rename_file.xlsx" that contains all the original names, original labels, and the new ones. Using this excel file combine with **rename** function and  **!!set_names** operator creates a quick, elegant and clear way to harmonize variables names along several dataset. Finally, for each data module it is made an adjust for numeric variables and data formats.
   
-###  04-Getting-all-variable-names-in-data.R
-
+###  04-Getting-all-variable-names-in-data. 
+ This code read the column names of raw dataset though all years and month and save an excel file "01-tender_base_colnames_to_rename.xlsx" that is the base to create the rename data used in the "05-Harmonize-tender-data.R". Once the  "02-tender_rename_file.xlsx" is already created is not ncessary to run this code again. The  "02-tender_rename_file.xlsx" is manually created, the original labels collumns was extracted from the website [dictionary](https://portaldatransparencia.gov.br/pagina-interna/603389-dicionario-de-dados-licitacoes).
+ 
 ###  05-Harmonize-tender-data.R
-
+  This is the central code that harmonize all data creating 5 data sets as described in the introduction section. For each data, we follow the process. First we create an loop by year, then we read all month files of this year, rename it according the "02-tender_rename_file.xlsx". Then, it adjust numeric variables replacing comma by dot and converting to number, and change date to dmy format. Finally I check data duplications, and remove redundant variables, for instance the manage unit name and its caracteristc is not necessary in the data, only its id that we merge with using the manage unit characteristics data.
+  All data generated in this code is saved in import folder. Also it is important to highligh that was used compress rds option to save the data, it means that the rds file is much smaller size than it should, however it takes a larger time to read it. The space that is saved worth, and it does not the comand to read (read_rds or readRDS keep working).
+  
 ###  06-XXXXXXX
  
 
