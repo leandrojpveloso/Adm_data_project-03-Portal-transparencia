@@ -2,7 +2,7 @@
 
 This data project aims to clean the tender data from Brazil's federal public expenses, which can be found on the public [Transparency Portal](https://portaldatransparencia.gov.br/download-de-dados) (known as "Portal da transparência" in Portuguese). In Brazil, federal government purchases are managed through the SIASG system (short for "Sistema Integrado de Administração e Serviços Gerais" in Portuguese). The Transparency Portal provides access to a rich set of data information from SIASG, including the universe of the bidding process and contracts. 
 
-This data work was made in R. It downloads the monthly compress data Transparency Portal and them clean it the data separating it in 5 dataset level which is harmonized names and adjusts formats, avoiding any major filter to keep the original major structure. The main output of this data project are the following data sets:
+This data project was conducted using the R programming language. It downloads monthly compressed data from the Transparency Portal and cleans the data by dividing it into five distinct datasets with standardized names and adjusted formats. The main outputs of this data project are the following datasets:
 
 *  **01-tender-YYYY** - It is a yealy data on tender process level. Where we have overall information about the bidding process such as tender method, total amount, bidding, buyer and dates of open and results.
 *  **02-tender-item-YYYY** -  For each tender process we have a set of lots (items) that compose this tender. This data has information of each item, your description, quantity pruchase, estimated value, and finally the winner information.
