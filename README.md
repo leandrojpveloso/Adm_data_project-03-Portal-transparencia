@@ -1,5 +1,18 @@
 # 1: Introduction
 
+This data project aims to clean the tender data from Brazil's federal public expenses, which can be found on the public [Transparency Portal](https://portaldatransparencia.gov.br/download-de-dados) (known as "Portal da transparência" in Portuguese). In Brazil, federal government purchases are managed through the SIASG system (short for "Sistema Integrado de Administração e Serviços Gerais" in Portuguese). The Transparency Portal provides access to a rich set of data information from SIASG, including the universe of the bidding process and contracts. 
+
+This data work was made in R. It downloads the monthly compress data Transparency Portal and them clean it the data separating it in 5 dataset level which is harmonized names and adjusts formats, avoiding any major filter to keep the original major structure. The main output of this data project are the following data sets:
+
+*  **01-tender-YYYY** - It is a yealy data on tender process level. Where we have overall information about the bidding process such as tender method, total amount, bidding, buyer and dates of open and results.
+*  **02-tender-item-YYYY** -  For each tender process we have a set of lots (items) that compose this tender. This data has information of each item, your description, quantity pruchase, estimated value, and finally the winner information.
+*  **03-tender-participants-YYYY** - Competition happens at the \textbf{item or lot level}- This data has the identification of each participants in a lot/tender.
+*  **04-tender-efforts-YYYY** - 
+*  **05-ug_data** - this data contains the information of manage unit that is responsable for the tender process. It has information about manage unit, organ, top organ and finally the location.
+
+
+# 2:
+
 The code inside this folder, `1-import`, is destinate to read the raw files and harmonize the files. It means, adjust names, labels, formats and minor cleannings.
 The main idea is that we have a set of data in dta/rds format that we can easy merge and append to create the data we requires for our astudy.
 
