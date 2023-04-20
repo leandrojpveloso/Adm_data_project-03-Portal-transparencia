@@ -29,7 +29,7 @@ The codes are separated in two categories:
 
 The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R"
 
-![g_stata_1](tree/main/02-documentation/Ilustration_organization_raw.png)
+![g_stata_1](https://www.dropbox.com/s/fc590tptcu7in1n/Ilustration_organization_raw.png?dl=0)
 
 
 ###  01-Download-porta_transparencia.R
