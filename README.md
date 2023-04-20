@@ -29,6 +29,9 @@ The codes are separated in two categories:
 
 The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R"
 
+![g_1_illustration_raw](02-documentation/Ilustration_Raw organization.png.png)
+
+
 ###  01-Download-porta_transparencia.R
   This code are has two chunks of the code. First, it download the monthly compress data file from the [here](https://portaldatransparencia.gov.br/download-de-dados/licitacoes). Them, it unzipp all files files donwloaded in a folder.
   
