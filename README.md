@@ -7,11 +7,27 @@ This data work was made in R. It downloads the monthly compress data Transparenc
 *  **01-tender-YYYY** - It is a yealy data on tender process level. Where we have overall information about the bidding process such as tender method, total amount, bidding, buyer and dates of open and results.
 *  **02-tender-item-YYYY** -  For each tender process we have a set of lots (items) that compose this tender. This data has information of each item, your description, quantity pruchase, estimated value, and finally the winner information.
 *  **03-tender-participants-YYYY** - Competition happens at the \textbf{item or lot level}- This data has the identification of each participants in a lot/tender.
-*  **04-tender-efforts-YYYY** - 
+*  **04-tender-efforts-YYYY** - data of "nota de empenho" - an short invoice that preecede the purchase.
 *  **05-ug_data** - this data contains the information of manage unit that is responsable for the tender process. It has information about manage unit, organ, top organ and finally the location.
 
 
-# 2:
+# 2: Code struture
+
+The coding flux is made by a master file code call "01-Master_tender_data_harmonization.R" that are responsable for the following functions:
+* Load Packages. ** It is necessary to install Rtools (R version>=4.2)** 
+* Define main paths
+* Create the folder structure of the project if it is not done.
+* Define the period that the data will clean
+* Declarate functions that are used in all project
+* Run all scripts in the correct order that is into the folder "01-R_code"
+
+The codes are separated in two categories:
+* **Raw organization** : It download the data and reorganize the raw in foders for each it module in a way to become easy to manage the raw files.
+* **Data Harmonization**: It cleans the dataset and harmonize names to general use.
+
+
+
+
 
 The code inside this folder, `1-import`, is destinate to read the raw files and harmonize the files. It means, adjust names, labels, formats and minor cleannings.
 The main idea is that we have a set of data in dta/rds format that we can easy merge and append to create the data we requires for our astudy.
