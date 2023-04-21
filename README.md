@@ -36,37 +36,36 @@ The Raw Organization process consists of three separate scripts: "01-Download-po
 Utilizing gzip compression offers a significant advantage for data storage, as the compressed data can be read directly without decompression using the fread command from the data.table package. For example, the raw folder containing data from 2013 to 2022 has a size of 1.34 GB when compressed with gzip, while the uncompressed version occupies 23.3 GB of disk space.
 
 ###  01-Download-porta_transparencia.R
-  This code are has two chunks of the code. First, it download the monthly compress data file from the [here](https://portaldatransparencia.gov.br/download-de-dados/licitacoes). Them, it unzipp all files files donwloaded in a folder.
+The script is divided into two parts. First, it downloads the monthly compressed data files from the specified [source](https://portaldatransparencia.gov.br/download-de-dados/licitacoes). Then, it extracts all the downloaded files into a designated folder.
   
 ###  02-Tender-organization-raw.R
- Each zip file contains four csv files (tender, lot, participants, and effort). Since it is in a bad organization, this script rename the data, rename for a pattern name, and separate each of 4 modules in a specific folder. Besides that, it also compress it to gz, which saves a large quantity of space and R is able to read it using data.table package.
+The script processes each zip file containing four CSV files (tender, lot, participants, and effort). Given the initial disorganization, the script renames the data according to a specific pattern and sorts each of the four modules into their respective folders. Additionally, it compresses the files using gzip, significantly saving storage space. R is capable of reading these compressed files directly using the data.table package.
  
 ###  03-Deleting-extra-files.R
- Since all files were already reorganized keeping all the original content, the raw downloaded and unzipped is deleted by this script to save space.
-
-The code inside this folder, `1-import`, is destinate to read the raw files and harmonize the files. It means, adjust names, labels, formats and minor cleannings.
-The main idea is that we have a set of data in dta/rds format that we can easy merge and append to create the data we requires for our astudy.
+Since all files were already reorganized keeping all the original content, the raw downloaded and unzipped is deleted by this script to save space.
 
 ## 2.2: Data Harmonization
-  The data harmonization process is responsable to standardize names and labels along the data, checking duplications, adjust data formats, and finally save the harmonized data in the a "import" folder in rds compressed format. In order to do it, we first create an auxiliary data "02-tender_rename_file.xlsx" that contains all the original names, original labels, and the new ones. Using this excel file combine with **rename** function and  **!!set_names** operator creates a quick, elegant and clear way to harmonize variables names along several dataset. Finally, for each data module it is made an adjust for numeric variables and data formats.
+  The data harmonization process is responsible for standardizing names and labels along the data, checking duplications, adjusting data formats, and saving the harmonized data in the "import" folder in rds compressed format. To do it, we first create an auxiliary data "02-tender_rename_file.xlsx" that contains all the original names, original labels, and new ones. Using this Excel file, combine with the **rename** function and **!!set_names** operator creates a quick, elegant, and straightforward way to harmonize variable names along several datasets. Finally, for each data module, it is made an adjust for numeric variables and data formats.
   
 ###  04-Getting-all-variable-names-in-data. 
- This code read the column names of raw dataset though all years and month and save an excel file "01-tender_base_colnames_to_rename.xlsx" that is the base to create the rename data used in the "05-Harmonize-tender-data.R". Once the  "02-tender_rename_file.xlsx" is already created is not ncessary to run this code again. The  "02-tender_rename_file.xlsx" is manually created, the original labels collumns was extracted from the website [dictionary](https://portaldatransparencia.gov.br/pagina-interna/603389-dicionario-de-dados-licitacoes).
- 
+ This script reads the column names of the raw dataset for all years and months and saves them in an Excel file called "01-tender_base_colnames_to_rename.xlsx". This file is the basis for creating the renamed data in the "05-Harmonize-tender-data.R" script. The "02-tender_rename_file.xlsx" is manually created, with the original labels columns extracted from the  [dictionary](https://portaldatransparencia.gov.br/pagina-interna/603389-dicionario-de-dados-licitacoes). on the website. Once the "02-tender_rename_file.xlsx" is made, it is not necessary to rerun this code.
+
 ###  05-Harmonize-tender-data.R
-  This is the central code that harmonize all data creating 5 data sets as described in the introduction section. For each data, we follow the process. First we create an loop by year, then we read all month files of this year, rename it according the "02-tender_rename_file.xlsx". Then, it adjust numeric variables replacing comma by dot and converting to number, and change date to dmy format. Finally I check data duplications, and remove redundant variables, for instance the manage unit name and its caracteristc is not necessary in the data, only its id that we merge with using the manage unit characteristics data.
-  All data generated in this code is saved in import folder. Also it is important to highligh that was used compress rds option to save the data, it means that the rds file is much smaller size than it should, however it takes a larger time to read it. The space that is saved worth, and it does not the comand to read (read_rds or readRDS keep working).
+  This central script harmonizes all data, creating five datasets as described in the introduction section. For each dataset, the process is as follows:
+Create a loop by year.
+Read all monthly files for the specified year.
+Rename the files according to the "02-tender_rename_file.xlsx".
+Adjust numeric variables by replacing commas with dots, converting them to numbers, and changing dates to the DMY format.
+Check for data duplications and remove redundant variables (e.g., keeping only the managing unit ID and removing its name and characteristics, as they can be merged using the managing unit characteristics data).
+All data generated by this script is saved in the "import" folder. It is important to note that the compressed RDS option saves the data, resulting in much smaller file sizes. Although it takes longer to read, the space saved is significant, and the commands to read the data (read_rds or readRDS) still function properly.
+
   
 ###  06-XXXXXXX
  
 
 # 3: Others usefull informations
 
-Federal public procurement in Brazil has three main source, two of them is public and one is restrict. The SIASG is a system that allows for all stages of the bidding process, from the preparation of the notice to the approval of the result. Information on bidding processes, such as bidding modalities used, contract values, participants, and winning companies, are recorded in this system.
-
-
-
-## 3.1 Procurement data
+## 3.1 Sources for procurement data
 
 * [Portal da transparência](https://www.portaltransparencia.gov.br/origem-dos-dados): A website that we have access to the the SIASG
 federal expense composition. It allows to download data of tenders and contracts monthly. 
