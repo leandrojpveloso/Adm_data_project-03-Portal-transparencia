@@ -7,8 +7,8 @@ This data project was conducted using the R programming language. It downloads m
 *  **01-tender-YYYY** - This is a yearly dataset containing information on the tender process level. It includes details about the bidding process, such as the tender method, total amount, bidding, buyer, and dates of opening and results. The unique id is the tender id which is a combination of buyer id + purchase method id + process tender id.
 *  **02-tender-item-YYYY** -  This dataset contains information on the individual lots (items) that are in a tender. It includes details about each item, description, purchase quantity, estimated value, and winning bidder's information. The unique observation in this data is item_id + winner id, it is rare to found a lot with more than one winner but it is possible for framework agreement ( Pregão do tipo registro de preços)
 *  **03-tender-participants-YYYY** -This dataset identifies each participant in a lot/tender, with competition occurring at the item or lot level.
-*  **04-tender-efforts-YYYY** - data of "nota de empenho" - an short invoice that preecede the purchase.
-*  **05-ug_data** - this data contains the information of manage unit that is responsable for the tender process. It has information about manage unit, organ, top organ and finally the location.
+*  **04-tender-efforts-YYYY** - This dataset contains data on "nota de empenho," a short invoice that precedes the purchase.
+*  **05-ug_data** - This dataset includes information on the management unit responsible for the tender process. It contains details about the management unit, the organizing body, the top-level organization, and the location.
 
 
 # 2: Code struture
@@ -27,9 +27,13 @@ The codes are separated in two categories:
 
 ## 2.1: Raw organization
 
-The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R"
+The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R". The figure bellow illustrates all the process made  by the codes 01,02, and 03. 
 
 ![plot](./02-documentation/Ilustration_organization_raw.png)
+
+
+
+Using gz compress give a good adanvantage to stoge data because it can readen without unzipp wiht the fread comand from data.table. Raw folder for whole period 2013-2022 has a seze 1.34 GB meanwhile the unzipped takes 23.3 GB in disk. 
 
 
 ###  01-Download-porta_transparencia.R
