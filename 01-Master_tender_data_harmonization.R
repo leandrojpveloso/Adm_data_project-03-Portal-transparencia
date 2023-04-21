@@ -144,7 +144,7 @@
 {
   # 2.1 Download the data from portal da transparencia and unzip it
   source(file.path(path_github,"01-R_code",
-                               "01-Download-porta_transparencia.r"))
+                               "01-Download-porta_transparencia.R"))
   
   # 2.2: Rename the Tender data and allocate for selected folder in 01-data/01-raw in gz format
   source(file.path(path_github,"01-R_code",
@@ -169,6 +169,6 @@
   
   # 3.3 Structure and minor statistics
   source(file.path(path_github,"01-R_code",
-                   "06-Harmonize-tender-data.R"))
+                   "06-structures_and_stats.R"))
   
 }
