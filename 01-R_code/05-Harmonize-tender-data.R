@@ -40,8 +40,8 @@
   tender_year_list = list()
   for (year in year_list ) {
     # Pattern files
-    paste0(".", year, "." )
-    list_file <- list.files(path_tender_purchases, pattern = pattern_str, full.names = FALSE)
+    pattern_tender = paste0(".", year, "." )
+    list_file <- list.files(path_tender_purchases, pattern = pattern_tender, full.names = FALSE)
     
     # Empty list to save files
     tender_month_list<- list()
@@ -168,7 +168,7 @@
   # Creating list to save all data
   for (year in year_list ) {
     # Pattern files
-    paste0(".", year, "." )
+    pattern_str = paste0(".", year, "." )
     list_file <- list.files(path_tender_items, pattern = pattern_str, full.names = FALSE)
     
     # Empty list to save files
@@ -274,7 +274,7 @@
   # Creating list to save all data
   for (year in year_list ) {
     # Pattern files
-    paste0(".", year, "." )
+    pattern_str = paste0(".", year, "." )
     list_file <- list.files(path_tender_participants , pattern = pattern_str, full.names = FALSE)
     
     # Empty list to save files
@@ -351,7 +351,7 @@
   # Creating list to save all data
   for (year in year_list ) {
     # Pattern files
-    paste0(".", year, "." )
+    pattern_str = paste0(".", year, "." )
     list_file <- list.files(path_tender_effort , pattern = pattern_str, full.names = FALSE)
     
     # Empty list to save files
