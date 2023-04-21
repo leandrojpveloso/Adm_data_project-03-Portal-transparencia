@@ -13,28 +13,27 @@ This data project was conducted using the R programming language. It downloads m
 
 # 2: Code struture
 
-The coding flux is made by a master file code call "**01-Master_tender_data_harmonization.R**" that are responsable for the following functions:
-* Load Packages. ** It is necessary to install Rtools (R version>=4.2)** 
-* Define main paths
-* Create the folder structure of the project if it is not done.
-* Define the period that the data will clean
-* Declarate functions that are used in all project
-* Run all scripts in the correct order that is into the folder "01-R_code"
+The coding process is managed by a master R script named **01-Master_tender_data_harmonization.R**, which is responsible for the following tasks:
 
-The codes are separated in two categories:
-* **Raw organization** : It download the data and reorganize the raw in foders for each it module in a way to become easy to manage the raw files.
-* **Data Harmonization**: It cleans the dataset and harmonize names to general use.
+1. **Load packages** (Note: Rtools is required for R version 4.2 or higher).
+2. **Define main file paths**.
+3. **Create the project's folder structure**, if it doesn't already exist.
+4. **Specify the time period for data cleaning**.
+5. **Declare functions used throughout the project**.
+6. **Execute all scripts in the correct order**, located in the "01-R_code" folder.
+
+The scripts are divided into two categories:
+
+- **Raw Organization**: These scripts download data and reorganize raw files into folders for each module, making it easier to manage the raw data.
+- **Data Harmonization**: These scripts clean the dataset and standardize naming conventions for general use.location
 
 ## 2.1: Raw organization
 
-The raw organization is separated in three codes: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R". The figure bellow illustrates all the process made  by the codes 01,02, and 03. 
+The Raw Organization process consists of three separate scripts: "01-Download-porta_transparencia.r", "02-Tender-organization-raw.R", and "03-Deleting-extra-files.R". The figure below illustrates the entire process carried out by scripts 01, 02, and 03.
 
 ![plot](./02-documentation/Ilustration_organization_raw.png)
 
-
-
-Using gz compress give a good adanvantage to stoge data because it can readen without unzipp wiht the fread comand from data.table. Raw folder for whole period 2013-2022 has a seze 1.34 GB meanwhile the unzipped takes 23.3 GB in disk. 
-
+Utilizing gzip compression offers a significant advantage for data storage, as the compressed data can be read directly without decompression using the fread command from the data.table package. For example, the raw folder containing data from 2013 to 2022 has a size of 1.34 GB when compressed with gzip, while the uncompressed version occupies 23.3 GB of disk space.
 
 ###  01-Download-porta_transparencia.R
   This code are has two chunks of the code. First, it download the monthly compress data file from the [here](https://portaldatransparencia.gov.br/download-de-dados/licitacoes). Them, it unzipp all files files donwloaded in a folder.
